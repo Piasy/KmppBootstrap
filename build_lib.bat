@@ -8,7 +8,8 @@ call .\gradlew.bat clean
 
 .\gradlew.bat assemble && ^
 cd kmpp\build\bin\mingw\debugShared && ^
-lib /def:kmpp_symbols.def /out:kmpp.lib && ^
+move kmpp_symbols.def kmpp.def && ^
+lib /def:kmpp.def /out:kmpp.lib && ^
 cd ..\..\..\..\.. && ^
 copy kmpp\build\bin\mingw\debugShared\kmpp.dll libs\Windows\ && ^
 copy kmpp\build\bin\mingw\debugShared\kmpp.lib libs\Windows\ && ^

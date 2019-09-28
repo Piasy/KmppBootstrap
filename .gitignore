@@ -6,3 +6,10 @@ build/
 local.properties
 
 **.xcodeproj
+
+.vs
+**.exe
+**.pdb
+**.ilk
+WindowsExample/WindowsExample/x64
+WindowsExample/WindowsExample/x86
