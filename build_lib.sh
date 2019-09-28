@@ -6,5 +6,5 @@ mkdir -p libs/iOS
 mkdir -p libs/macOS
 
 ./gradlew clean assemble && \
-cp -R kmpp/build/bin/ios/debugFramework/kmpp.framework libs/iOS && \
-cp -R kmpp/build/bin/macos/debugFramework/kmpp.framework libs/macOS
+cp -R kmpp/build/bin/ios/debugFramework/kmpp.framework libs/iOS/ && \
+cp -R kmpp/build/bin/macos/debugFramework/kmpp.framework libs/macOS/

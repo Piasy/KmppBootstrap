@@ -50,7 +50,7 @@ kotlin {
     }
 
     if (isWindows || isMacOS) {
-        mingwX86("mingw") {
+        mingwX64("mingw") {
             binaries {
                 sharedLib {
                     baseName = "kmpp"

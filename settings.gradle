@@ -24,4 +24,7 @@ pluginManagement {
 enableFeaturePreview('GRADLE_METADATA')
 
 include ':kmpp'
-include ':AndroidExample'
+
+if (System.getProperty("os.name") == "Mac OS X") {
+    include ':AndroidExample'
+}

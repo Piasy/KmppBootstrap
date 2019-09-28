@@ -1,0 +1,15 @@
+del libs\Windows\kmpp.dll
+del libs\Windows\kmpp.lib
+del libs\Windows\kmpp_api.h
+
+mkdir libs\Windows
+:: clean may fail to delete output dir generated in macOS
+call .\gradlew.bat clean
+
+.\gradlew.bat assemble && ^
+cd kmpp\build\bin\mingw\debugShared && ^
+lib /def:kmpp_symbols.def /out:kmpp.lib && ^
+cd ..\..\..\..\.. && ^
+copy kmpp\build\bin\mingw\debugShared\kmpp.dll libs\Windows\ && ^
+copy kmpp\build\bin\mingw\debugShared\kmpp.lib libs\Windows\ && ^
+copy kmpp\build\bin\mingw\debugShared\kmpp_api.h libs\Windows\
