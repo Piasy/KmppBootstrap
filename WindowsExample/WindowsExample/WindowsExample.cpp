@@ -12,6 +12,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <string>
 
 #include "WindowsExample.h"
 
@@ -146,18 +147,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		helloButton = CreateWindow(
 			TEXT("button"), TEXT("Hello"),
 			WS_CHILD | WS_VISIBLE,
-			800, 140, 75, 20,
+			400, 140, 75, 20,
 			hWnd, (HMENU)IDB_BUTTON_HELLO,
-			((LPCREATESTRUCT)lParam)->hInstance, NULL
+			hInst, NULL
 		);
 
-		infoArea = CreateWindow(
-			TEXT("static"), TEXT(""),
-			WS_CHILD | WS_VISIBLE,
-			600, 170, 300, 500,
-			hWnd, (HMENU)IDB_BUTTON_HELLO,
-			((LPCREATESTRUCT)lParam)->hInstance, NULL
-		);
 		break;
 	}
     case WM_COMMAND:
@@ -171,6 +165,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				kmpp_ExportedSymbols* lib = kmpp_symbols();
 				kmpp_kref_com_piasy_kmpp_data_Person piasy = lib->kotlin.root.com.piasy.kmpp.data.Person.Person_("Piasy", 26);
 				kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp = lib->kotlin.root.com.piasy.kmpp.KmppBootstrap.KmppBootstrap(piasy);
+				const char* text = lib->kotlin.root.com.piasy.kmpp.sayHello(kmpp);
+
+				std::string textStr(text);
+				std::wstring textWstr(textStr.begin(), textStr.end());
+				infoArea = CreateWindow(
+					TEXT("static"), (LPCTSTR)textWstr.c_str(),
+					WS_CHILD | WS_VISIBLE,
+					300, 170, 300, 500,
+					hWnd, (HMENU)IDB_BUTTON_HELLO,
+					hInst, NULL
+				);
+				
+				lib->DisposeString(text);
+				lib->DisposeStablePointer(kmpp.pinned);
 				break;
 			}
             case IDM_ABOUT:

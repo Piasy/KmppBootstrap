@@ -14,6 +14,16 @@ iOS, macOS, and Linux (wip):
 ./build_lib.sh
 ```
 
-Windows: wip
+Windows:
 
-Android: no need to build library manually, just open the project in Android Studio and run AndroidExample.
+```batch
+.\build_lib.bat
+```
+
+Android: no need to build library manually, just open the project in Android Studio and
+run AndroidExample.
+
+## Caveat
+
+WindowsExample will encounter compilation error when it's located in macOS file system
+and shared to Parallels Desktop Windows virtual machine, so you should clone them into Windows file system.

@@ -52,6 +52,9 @@ typedef struct {
 } kmpp_kref_kotlin_Unit;
 typedef struct {
   kmpp_KNativePtr pinned;
+} kmpp_kref_com_piasy_kmpp_KmppBootstrap;
+typedef struct {
+  kmpp_KNativePtr pinned;
 } kmpp_kref_com_piasy_kmpp_KmppBootstrapShared;
 typedef struct {
   kmpp_KNativePtr pinned;
@@ -59,9 +62,6 @@ typedef struct {
 typedef struct {
   kmpp_KNativePtr pinned;
 } kmpp_kref_com_piasy_kmpp_api_Hello;
-typedef struct {
-  kmpp_KNativePtr pinned;
-} kmpp_kref_com_piasy_kmpp_KmppBootstrap;
 typedef struct {
   kmpp_KNativePtr pinned;
 } kmpp_kref_kotlinx_serialization_SerializationConstructorMarker;
@@ -112,6 +112,7 @@ typedef struct {
       struct {
         struct {
           struct {
+            const char* (*sayHello)(kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp);
             struct {
               kmpp_KType* (*_type)(void);
               kmpp_kref_com_piasy_kmpp_KmppBootstrapShared (*KmppBootstrapShared)(kmpp_kref_com_piasy_kmpp_data_Person person, kmpp_kref_com_piasy_kmpp_api_Hello hello);
