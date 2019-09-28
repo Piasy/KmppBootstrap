@@ -8,13 +8,13 @@ After install [XcodeGen](https://github.com/yonaskolb/XcodeGen), run `./setup_xc
 
 ## Build library
 
-iOS, macOS, and Linux (wip):
+iOS, macOS, and Linux:
 
 ```bash
 ./build_lib.sh
 ```
 
-Windows:
+Windows (in the `x64 Native Tools Command Prompt` console):
 
 ```batch
 .\build_lib.bat

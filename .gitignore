@@ -13,3 +13,5 @@ local.properties
 **.ilk
 WindowsExample/WindowsExample/x64
 WindowsExample/WindowsExample/x86
+
+LinuxExample/LinuxExample
