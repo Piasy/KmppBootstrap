@@ -1,0 +1,22 @@
+name: iOSExample
+targets:
+  iOSExample:
+    type: application
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources:
+      - path: iOSExample
+    dependencies:
+      - framework: ../libs/iOS/kmpp.framework
+        embed: true
+    settings:
+      LIBRARY_SEARCH_PATHS: "$(inherited)"
+      OTHER_LDFLAGS: "$(inherited)"
+      FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PROJECT_DIR)/../libs/"
+      CLANG_WARN_DOCUMENTATION_COMMENTS: "NO"
+      ENABLE_BITCODE: "NO"
+      DEVELOPMENT_TEAM: "H6E8P88Q4E"
+      ONLY_ACTIVE_ARCH: "NO"
+      VALID_ARCHS: "arm64"
+      SWIFT_VERSION: "5.0"
+      PRODUCT_BUNDLE_IDENTIFIER: "com.piasy.kmpp.iOSExample"

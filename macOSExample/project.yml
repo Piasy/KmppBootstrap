@@ -1,0 +1,22 @@
+name: macOSExample
+targets:
+  macOSExample:
+    type: application
+    platform: macOS
+    deploymentTarget: "10.14"
+    sources:
+      - path: macOSExample
+    dependencies:
+      - framework: ../libs/macOS/kmpp.framework
+        embed: true
+    settings:
+      LIBRARY_SEARCH_PATHS: "$(inherited)"
+      OTHER_LDFLAGS: "$(inherited)"
+      FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PROJECT_DIR)/../libs/"
+      CLANG_WARN_DOCUMENTATION_COMMENTS: "NO"
+      ENABLE_BITCODE: "NO"
+      DEVELOPMENT_TEAM: "H6E8P88Q4E"
+      ONLY_ACTIVE_ARCH: "NO"
+      VALID_ARCHS: "x86_64"
+      SWIFT_VERSION: "5.0"
+      PRODUCT_BUNDLE_IDENTIFIER: "com.piasy.kmpp.macOSExample"

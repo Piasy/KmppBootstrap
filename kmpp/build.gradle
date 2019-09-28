@@ -1,0 +1,150 @@
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+if (System.getProperty("os.name") == "Mac OS X") {
+    // although apply is the old way, we can't use the new way inside if block :(
+    apply plugin: 'com.android.library'
+}
+
+def hostOs = System.getProperty("os.name")
+def isMacOS = hostOs == "Mac OS X"
+def isLinux = hostOs == "Linux"
+def isWindows = hostOs.startsWith("Windows")
+
+if (isMacOS) {
+    android {
+        compileSdkVersion 27
+        defaultConfig {
+            minSdkVersion 15
+        }
+        buildTypes {
+            release {
+                minifyEnabled true
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                        'proguard-rules.pro'
+            }
+        }
+    }
+}
+
+kotlin {
+    if (isMacOS) {
+        android("android")
+        macosX64("macos") {
+            binaries {
+                framework {
+                    baseName = "kmpp"
+                }
+            }
+        }
+        iosArm64("ios") {
+            binaries {
+                framework {
+                    baseName = "kmpp"
+                    embedBitcode("disable")
+                }
+            }
+        }
+    }
+
+    if (isWindows || isMacOS) {
+        mingwX86("mingw") {
+            binaries {
+                sharedLib {
+                    baseName = "kmpp"
+                }
+            }
+        }
+    }
+
+    if (isLinux || isMacOS) {
+        linuxX64("linux") {
+            binaries {
+                sharedLib {
+                    baseName = "kmpp"
+                }
+            }
+        }
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${kotlinx_serialization_version}"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${kotlinx_coroutines_version}"
+            }
+        }
+        if (isMacOS) {
+            androidMain {
+                dependencies {
+                    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${kotlinx_serialization_version}"
+                    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinx_coroutines_version}"
+                }
+            }
+            iosMain {
+                dependencies {
+                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+                    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${kotlinx_coroutines_version}"
+                }
+            }
+            macosMain {
+                dependencies {
+                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+                    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${kotlinx_coroutines_version}"
+                }
+            }
+        }
+        if (isWindows || isMacOS) {
+            mingwMain {
+                dependencies {
+                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+                    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${kotlinx_coroutines_version}"
+                }
+            }
+        }
+        if (isLinux || isMacOS) {
+            linuxMain {
+                dependencies {
+                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+                    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${kotlinx_coroutines_version}"
+                }
+            }
+        }
+    }
+}
+
+if (isMacOS) {
+    task copyFramework {
+        def buildType = project.findProperty("kotlin.build.type") ?: "DEBUG"
+        dependsOn "link${buildType.toLowerCase().capitalize()}FrameworkIos"
+
+        doLast {
+            def srcFile = kotlin.targets.ios.binaries.getFramework(buildType).outputFile
+            def targetDir = getProperty("configuration.build.dir")
+            copy {
+                from srcFile.parent
+                into targetDir
+                include 'greeting.framework/**'
+                include 'greeting.framework.dSYM'
+            }
+        }
+    }
+
+    task iosTest {
+        def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
+        dependsOn 'linkDebugTestIos'
+        group = JavaBasePlugin.VERIFICATION_GROUP
+        description = "Runs tests for target 'ios' on an iOS simulator"
+
+        doLast {
+            def binary = kotlin.targets.ios.binaries.getTest('DEBUG').outputFile
+            exec {
+                commandLine 'xcrun', 'simctl', 'spawn', device, binary.absolutePath
+            }
+        }
+    }
+}
