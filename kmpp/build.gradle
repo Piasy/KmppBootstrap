@@ -33,11 +33,11 @@ kotlin {
     if (isMacOS) {
         android("android")
         macosX64("macos") {
-            compilations.main.cinterops {
+            /*compilations.main.cinterops {
                 dummy {
                     includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/native_libs")
                 }
-            }
+            }*/
 
             binaries {
                 framework {
