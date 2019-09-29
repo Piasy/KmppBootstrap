@@ -11,7 +11,11 @@ local.properties
 **.exe
 **.pdb
 **.ilk
+**.exp
 WindowsExample/WindowsExample/x64
 WindowsExample/WindowsExample/x86
+WinDummyDLL/WinDummyDLL/x64
+WinDummyDLL/WinDummyDLL/x86
+WinDummyDLL/WinDummyDLL/Debug
 
 LinuxExample/LinuxExample
