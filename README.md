@@ -25,5 +25,6 @@ run AndroidExample.
 
 ## Caveat
 
-WindowsExample will encounter compilation error when it's located in macOS file system
-and shared to Parallels Desktop Windows virtual machine, so you should clone them into Windows file system.
++ You need install a 64 bit JDK/JRE for Windows;
++ WindowsExample will encounter compilation error when it's located in macOS file system
+and shared to Parallels Desktop Windows virtual machine, so you should clone them into Windows file system;
