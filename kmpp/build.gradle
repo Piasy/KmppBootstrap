@@ -33,6 +33,12 @@ kotlin {
     if (isMacOS) {
         android("android")
         macosX64("macos") {
+            compilations.main.cinterops {
+                dummy {
+                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/native_libs")
+                }
+            }
+
             binaries {
                 framework {
                     baseName = "kmpp"
@@ -51,6 +57,12 @@ kotlin {
 
     if (isWindows || isMacOS) {
         mingwX64("mingw") {
+            compilations.main.cinterops {
+                dummy {
+                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/native_libs")
+                }
+            }
+
             binaries {
                 sharedLib {
                     baseName = "kmpp"

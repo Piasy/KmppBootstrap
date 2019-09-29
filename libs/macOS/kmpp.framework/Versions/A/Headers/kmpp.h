@@ -161,6 +161,7 @@ __attribute__((swift_name("KmppBootstrap")))
 @interface KmppKmppBootstrap : KmppKmppBootstrapShared
 - (instancetype)initWithPerson:(KmppPerson *)person __attribute__((swift_name("init(person:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithPerson:(KmppPerson *)person hello:(KmppHello *)hello __attribute__((swift_name("init(person:hello:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (NSString *)sayHello __attribute__((swift_name("sayHello()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))

@@ -10,7 +10,7 @@ import kotlinx.serialization.json.JsonConfiguration
  */
 abstract class KmppBootstrapShared(private val person: Person, private val hello: Hello) {
 
-    fun sayHello(): String {
+    open fun sayHello(): String {
         val json = Json(JsonConfiguration.Stable)
         val info = json.stringify(Person.serializer(), person)
         return hello.sayHello(info)

@@ -1,0 +1,4 @@
+headers = dummy.h
+headerFilter = *
+
+linkerOpts.osx = -L/Users/piasy/src/Kotlin/KmppBootstrap/libs/native_libs -ldummy
