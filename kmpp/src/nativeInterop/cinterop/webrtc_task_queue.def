@@ -1,0 +1,7 @@
+headers = webrtc_task_queue.h
+headerFilter = *
+
+staticLibraries.linux = librtc_task_queue_libevent_lib.a
+
+libraryPaths.linux = /Users/piasy/src/Kotlin/KmppBootstrap/libs/webrtc_task_queue/Linux
+#linkerOpts.mingw = -L"C:\Users\Piasy\src\KmppBootstrap\libs\Windows" -ldummy

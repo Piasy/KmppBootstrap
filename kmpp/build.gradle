@@ -3,15 +3,15 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
-if (System.getProperty("os.name") == "Mac OS X") {
-    // although apply is the old way, we can't use the new way inside if block :(
-    apply plugin: 'com.android.library'
-}
-
 def hostOs = System.getProperty("os.name")
 def isMacOS = hostOs == "Mac OS X"
 def isLinux = hostOs == "Linux"
 def isWindows = hostOs.startsWith("Windows")
+
+if (isMacOS) {
+    // although apply is the old way, we can't use the new way inside if block :(
+    apply plugin: 'com.android.library'
+}
 
 if (isMacOS) {
     android {
@@ -35,7 +35,7 @@ kotlin {
         macosX64("macos") {
             /*compilations.main.cinterops {
                 dummy {
-                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/native_libs")
+                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
                 }
             }*/
 
@@ -59,7 +59,10 @@ kotlin {
         mingwX64("mingw") {
             compilations.main.cinterops {
                 dummy {
-                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/native_libs")
+                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
+                }
+                webrtc_task_queue {
+                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/webrtc_task_queue/include")
                 }
             }
 
@@ -74,6 +77,12 @@ kotlin {
     if (isLinux || isMacOS) {
         linuxX64("linux") {
             binaries {
+                compilations.main.cinterops {
+                    webrtc_task_queue {
+                        includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/webrtc_task_queue/include")
+                    }
+                }
+
                 sharedLib {
                     baseName = "kmpp"
                 }

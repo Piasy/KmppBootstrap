@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.multiplatform'
 }
 
 android {
@@ -26,12 +25,8 @@ android {
     }
 }
 
-kotlin {
-    targets.fromPreset(presets.android, 'android')
-}
-
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
     implementation project(':kmpp')
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
