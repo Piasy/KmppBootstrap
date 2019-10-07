@@ -5,12 +5,4 @@ package com.piasy.kmpp.api
  */
 expect class TaskQueue {
     fun post(task: () -> Unit)
-
-    fun destroy()
-}
-
-expect class TaskQueueFactory {
-    fun create(name: String, highPriority: Boolean): TaskQueue?
-
-    fun destroy()
 }

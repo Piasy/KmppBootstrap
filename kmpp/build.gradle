@@ -61,9 +61,6 @@ kotlin {
                 dummy {
                     includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
                 }
-                webrtc_task_queue {
-                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/webrtc_task_queue/include")
-                }
             }
 
             binaries {
@@ -77,12 +74,6 @@ kotlin {
     if (isLinux || isMacOS) {
         linuxX64("linux") {
             binaries {
-                compilations.main.cinterops {
-                    webrtc_task_queue {
-                        includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/webrtc_task_queue/include")
-                    }
-                }
-
                 sharedLib {
                     baseName = "kmpp"
                 }
