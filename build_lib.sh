@@ -12,4 +12,4 @@ mkdir -p libs/Linux
 cp -R kmpp/build/bin/ios/debugFramework/kmpp.framework libs/iOS/ && \
 cp -R kmpp/build/bin/macos/debugFramework/kmpp.framework libs/macOS/ && \
 cp kmpp/build/bin/linux/debugShared/libkmpp.so libs/Linux/ && \
-cp -R kmpp/build/bin/linux/debugShared/libkmpp_api.h libs/Linux/
+cp kmpp/build/bin/linux/debugShared/libkmpp_api.h libs/Linux/

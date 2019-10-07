@@ -11,11 +11,6 @@ actual class TaskQueue() {
     private val worker = Worker.start()
 
     actual fun post(task: () -> Unit) {
-        worker.execute(SAFE, { true }, {
-            // kotlin.native.concurrent.Worker.execute must take an unbound, non-capturing function or lambda
-            // task()
-            true
-        })
+        worker.execute(SAFE, { task }) { t -> t() }
     }
-
 }
