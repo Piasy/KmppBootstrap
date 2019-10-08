@@ -4,6 +4,7 @@ import com.piasy.kmpp.api.Logger
 import com.piasy.kmpp.api.Platform
 import com.piasy.kmpp.api.TaskQueue
 import com.piasy.kmpp.data.Person
+import kotlinx.cinterop.toKString
 
 /**
  * Created by Piasy{github.com/Piasy} on 2019/9/27.

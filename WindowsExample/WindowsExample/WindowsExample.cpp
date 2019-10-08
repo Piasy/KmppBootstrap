@@ -164,8 +164,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			{
 				kmpp_ExportedSymbols* lib = kmpp_symbols();
 				kmpp_kref_com_piasy_kmpp_data_Person piasy = lib->kotlin.root.com.piasy.kmpp.data.Person.Person_("Piasy", 26);
-				kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp = lib->kotlin.root.com.piasy.kmpp.KmppBootstrap.KmppBootstrap(piasy);
-				const char* text = lib->kotlin.root.com.piasy.kmpp.sayHello(kmpp);
+				kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp = lib->kotlin.root.com.piasy.kmpp.KmppBootstrap.KmppBootstrap();
+				/*const char* text = lib->kotlin.root.com.piasy.kmpp.sayHello(kmpp, piasy);
 
 				std::string textStr(text);
 				std::wstring textWstr(textStr.begin(), textStr.end());
@@ -177,7 +177,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					hInst, NULL
 				);
 				
-				lib->DisposeString(text);
+				lib->DisposeString(text);*/
+				
+				for (int i = 0; i < 1000; i++) {
+					lib->kotlin.root.com.piasy.kmpp.sayHello2(kmpp, piasy);
+				}
+				
 				lib->DisposeStablePointer(kmpp.pinned);
 				break;
 			}

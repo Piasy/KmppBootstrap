@@ -55,13 +55,22 @@ typedef struct {
 } kmpp_kref_com_piasy_kmpp_KmppBootstrap;
 typedef struct {
   kmpp_KNativePtr pinned;
-} kmpp_kref_com_piasy_kmpp_KmppBootstrapShared;
-typedef struct {
-  kmpp_KNativePtr pinned;
 } kmpp_kref_com_piasy_kmpp_data_Person;
 typedef struct {
   kmpp_KNativePtr pinned;
-} kmpp_kref_com_piasy_kmpp_api_Hello;
+} kmpp_kref_com_piasy_kmpp_KmppBootstrapShared;
+typedef struct {
+  kmpp_KNativePtr pinned;
+} kmpp_kref_com_piasy_kmpp_api_Platform;
+typedef struct {
+  kmpp_KNativePtr pinned;
+} kmpp_kref_com_piasy_kmpp_api_TaskQueue;
+typedef struct {
+  kmpp_KNativePtr pinned;
+} kmpp_kref_com_piasy_kmpp_api_Logger;
+typedef struct {
+  kmpp_KNativePtr pinned;
+} kmpp_kref_kotlin_Function0;
 typedef struct {
   kmpp_KNativePtr pinned;
 } kmpp_kref_kotlinx_serialization_SerializationConstructorMarker;
@@ -112,22 +121,34 @@ typedef struct {
       struct {
         struct {
           struct {
-            const char* (*sayHello)(kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp);
+            const char* (*sayHello)(kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp, kmpp_kref_com_piasy_kmpp_data_Person person);
+            void (*sayHello2)(kmpp_kref_com_piasy_kmpp_KmppBootstrap kmpp, kmpp_kref_com_piasy_kmpp_data_Person person);
             struct {
               kmpp_KType* (*_type)(void);
-              kmpp_kref_com_piasy_kmpp_KmppBootstrapShared (*KmppBootstrapShared)(kmpp_kref_com_piasy_kmpp_data_Person person, kmpp_kref_com_piasy_kmpp_api_Hello hello);
-              const char* (*sayHello)(kmpp_kref_com_piasy_kmpp_KmppBootstrapShared thiz);
+              kmpp_kref_com_piasy_kmpp_KmppBootstrapShared (*KmppBootstrapShared)(kmpp_kref_com_piasy_kmpp_api_Platform platform, kmpp_kref_com_piasy_kmpp_api_TaskQueue taskQueue, kmpp_kref_com_piasy_kmpp_api_Logger logger);
+              void (*sayHello)(kmpp_kref_com_piasy_kmpp_KmppBootstrapShared thiz, kmpp_kref_com_piasy_kmpp_data_Person person);
+              void (*sayHello2)(kmpp_kref_com_piasy_kmpp_KmppBootstrapShared thiz, kmpp_kref_com_piasy_kmpp_data_Person person);
             } KmppBootstrapShared;
             struct {
               kmpp_KType* (*_type)(void);
-              kmpp_kref_com_piasy_kmpp_KmppBootstrap (*KmppBootstrap)(kmpp_kref_com_piasy_kmpp_data_Person person);
+              kmpp_kref_com_piasy_kmpp_KmppBootstrap (*KmppBootstrap)();
             } KmppBootstrap;
             struct {
               struct {
                 kmpp_KType* (*_type)(void);
-                kmpp_kref_com_piasy_kmpp_api_Hello (*Hello)();
-                const char* (*sayHello)(kmpp_kref_com_piasy_kmpp_api_Hello thiz, const char* info);
-              } Hello;
+                kmpp_kref_com_piasy_kmpp_api_Logger (*Logger)();
+                void (*info)(kmpp_kref_com_piasy_kmpp_api_Logger thiz, const char* tag, const char* content);
+              } Logger;
+              struct {
+                kmpp_KType* (*_type)(void);
+                kmpp_kref_com_piasy_kmpp_api_Platform (*Platform)();
+                const char* (*platform)(kmpp_kref_com_piasy_kmpp_api_Platform thiz);
+              } Platform;
+              struct {
+                kmpp_KType* (*_type)(void);
+                kmpp_kref_com_piasy_kmpp_api_TaskQueue (*TaskQueue)();
+                void (*post)(kmpp_kref_com_piasy_kmpp_api_TaskQueue thiz, kmpp_kref_kotlin_Function0 task);
+              } TaskQueue;
             } api;
             struct {
               struct {

@@ -9,7 +9,7 @@ call .\gradlew.bat clean
 .\gradlew.bat assemble && ^
 cd kmpp\build\bin\mingw\debugShared && ^
 move kmpp_symbols.def kmpp.def && ^
-lib /def:kmpp.def /out:kmpp.lib && ^
+lib /machine:x64 /def:kmpp.def /out:kmpp.lib && ^
 cd ..\..\..\..\.. && ^
 copy kmpp\build\bin\mingw\debugShared\kmpp.dll libs\Windows\ && ^
 copy kmpp\build\bin\mingw\debugShared\kmpp.lib libs\Windows\ && ^
