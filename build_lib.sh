@@ -1,9 +1,8 @@
 #!/bin/zsh
 
-rm -rf libs/iOS/kmpp.framework
-rm -rf libs/macOS/kmpp.framework
-rm -f libs/Linux/libkmpp.so
-rm -f libs/Linux/libkmpp_api.h
+rm -rf libs/iOS/
+rm -rf libs/macOS/
+rm -rf libs/Linux/
 mkdir -p libs/iOS
 mkdir -p libs/macOS
 mkdir -p libs/Linux
@@ -12,4 +11,4 @@ mkdir -p libs/Linux
 cp -R kmpp/build/bin/ios/debugFramework/kmpp.framework libs/iOS/ && \
 cp -R kmpp/build/bin/macos/debugFramework/kmpp.framework libs/macOS/ && \
 cp kmpp/build/bin/linux/debugShared/libkmpp.so libs/Linux/ && \
-cp -R kmpp/build/bin/linux/debugShared/libkmpp_api.h libs/Linux/
+cp kmpp/build/bin/linux/debugShared/libkmpp_api.h libs/Linux/

@@ -28,8 +28,8 @@ class ViewController: NSViewController {
 
     //MARK: Actions
     @IBAction func onClick(_ sender: Any) {
-        let kmpp = KmppBootstrap(person: Person(name: "Piasy", age: 26))
-        label.stringValue = kmpp.sayHello()
+        let kmpp = KmppBootstrap()
+        label.stringValue = kmpp.sayHello(person: Person(name: "Piasy", age: 26))
     }
 
 }

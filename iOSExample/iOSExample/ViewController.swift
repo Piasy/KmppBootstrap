@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var label: UILabel!
 
+    let kmpp = KmppBootstrap()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -25,8 +27,7 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     @IBAction func hello(_ sender: Any) {
-        let kmpp = KmppBootstrap(person: Person(name: "Piasy", age: 26))
-        label.text = kmpp.sayHello()
+        label.text = kmpp.sayHello(person: Person(name: "Piasy", age: 26))
     }
 }
 
