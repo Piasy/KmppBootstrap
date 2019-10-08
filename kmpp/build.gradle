@@ -8,43 +8,43 @@ def isMacOS = hostOs == "Mac OS X"
 def isLinux = hostOs == "Linux"
 def isWindows = hostOs.startsWith("Windows")
 
-if (isMacOS) {
-    // although apply is the old way, we can't use the new way inside if block :(
-    apply plugin: 'com.android.library'
-}
-
-if (isMacOS) {
-    android {
-        compileSdkVersion 27
-        defaultConfig {
-            minSdkVersion 15
-        }
-        buildTypes {
-            release {
-                minifyEnabled true
-                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
-                        'proguard-rules.pro'
-            }
-        }
-    }
-}
+//if (isMacOS) {
+//    // although apply is the old way, we can't use the new way inside if block :(
+//    apply plugin: 'com.android.library'
+//}
+//
+//if (isMacOS) {
+//    android {
+//        compileSdkVersion 27
+//        defaultConfig {
+//            minSdkVersion 15
+//        }
+//        buildTypes {
+//            release {
+//                minifyEnabled true
+//                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+//                        'proguard-rules.pro'
+//            }
+//        }
+//    }
+//}
 
 kotlin {
     if (isMacOS) {
-        android("android")
-        macosX64("macos") {
-            /*compilations.main.cinterops {
-                dummy {
-                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
-                }
-            }*/
-
-            binaries {
-                framework {
-                    baseName = "kmpp"
-                }
-            }
-        }
+//        android("android")
+//        macosX64("macos") {
+//            /*compilations.main.cinterops {
+//                dummy {
+//                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
+//                }
+//            }*/
+//
+//            binaries {
+//                framework {
+//                    baseName = "kmpp"
+//                }
+//            }
+//        }
         iosArm64("ios") {
             binaries {
                 framework {
@@ -55,31 +55,31 @@ kotlin {
         }
     }
 
-    if (isWindows || isMacOS) {
-        mingwX64("mingw") {
-            compilations.main.cinterops {
-                dummy {
-                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
-                }
-            }
-
-            binaries {
-                sharedLib {
-                    baseName = "kmpp"
-                }
-            }
-        }
-    }
-
-    if (isLinux || isMacOS) {
-        linuxX64("linux") {
-            binaries {
-                sharedLib {
-                    baseName = "kmpp"
-                }
-            }
-        }
-    }
+//    if (isWindows || isMacOS) {
+//        mingwX64("mingw") {
+//            compilations.main.cinterops {
+//                dummy {
+//                    includeDirs.headerFilterOnly("${rootProject.projectDir}/libs/dummy")
+//                }
+//            }
+//
+//            binaries {
+//                sharedLib {
+//                    baseName = "kmpp"
+//                }
+//            }
+//        }
+//    }
+//
+//    if (isLinux || isMacOS) {
+//        linuxX64("linux") {
+//            binaries {
+//                sharedLib {
+//                    baseName = "kmpp"
+//                }
+//            }
+//        }
+//    }
 
     sourceSets {
         commonMain {
@@ -89,37 +89,37 @@ kotlin {
             }
         }
         if (isMacOS) {
-            androidMain {
-                dependencies {
-                    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${kotlinx_serialization_version}"
-                }
-            }
+//            androidMain {
+//                dependencies {
+//                    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+//                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${kotlinx_serialization_version}"
+//                }
+//            }
             iosMain {
                 dependencies {
                     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
                 }
             }
-            macosMain {
-                dependencies {
-                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
-                }
-            }
+//            macosMain {
+//                dependencies {
+//                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+//                }
+//            }
         }
-        if (isWindows || isMacOS) {
-            mingwMain {
-                dependencies {
-                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
-                }
-            }
-        }
-        if (isLinux || isMacOS) {
-            linuxMain {
-                dependencies {
-                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
-                }
-            }
-        }
+//        if (isWindows || isMacOS) {
+//            mingwMain {
+//                dependencies {
+//                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+//                }
+//            }
+//        }
+//        if (isLinux || isMacOS) {
+//            linuxMain {
+//                dependencies {
+//                    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${kotlinx_serialization_version}"
+//                }
+//            }
+//        }
     }
 }
 

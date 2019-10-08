@@ -7,4 +7,4 @@ import com.piasy.kmpp.api.TaskQueue
 /**
  * Created by Piasy{github.com/Piasy} on 2019-02-16.
  */
-class KmppBootstrap() : KmppBootstrapShared(Platform(), TaskQueue(), Logger())
+class KmppBootstrap : KmppBootstrapShared(Platform(), TaskQueue(), Logger())

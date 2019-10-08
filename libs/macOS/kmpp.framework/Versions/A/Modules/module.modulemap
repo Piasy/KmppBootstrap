@@ -1,6 +1,0 @@
-framework module kmpp {
-    umbrella header "kmpp.h"
-
-    export *
-    module * { export * }
-}

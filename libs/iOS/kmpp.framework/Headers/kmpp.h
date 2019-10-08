@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class KmppPlatform, KmppTaskQueue, KmppLogger, KmppPerson, KmppKmppBootstrapShared, KmppKotlinArray, KmppKotlinx_serialization_runtimeEnumDescriptor, KmppKotlinx_serialization_runtimeSerialKind, KmppKotlinNothing, KmppKotlinx_serialization_runtimeUpdateMode, KmppKotlinx_serialization_runtimeSerialClassDescImpl, KmppKotlinEnum;
+@class KmppPlatform, KmppTaskQueue, KmppLogger, KmppKmppBootstrapShared, KmppPerson, KmppKotlinArray, KmppKotlinx_serialization_runtimeEnumDescriptor, KmppKotlinx_serialization_runtimeSerialKind, KmppKotlinNothing, KmppKotlinx_serialization_runtimeUpdateMode, KmppKotlinx_serialization_runtimeSerialClassDescImpl, KmppKotlinEnum;
 
 @protocol KmppKotlinx_serialization_runtimeKSerializer, KmppKotlinx_serialization_runtimeEncoder, KmppKotlinx_serialization_runtimeSerialDescriptor, KmppKotlinx_serialization_runtimeSerializationStrategy, KmppKotlinx_serialization_runtimeDecoder, KmppKotlinx_serialization_runtimeDeserializationStrategy, KmppKotlinx_serialization_runtimeCompositeEncoder, KmppKotlinx_serialization_runtimeSerialModule, KmppKotlinAnnotation, KmppKotlinx_serialization_runtimeCompositeDecoder, KmppKotlinIterator, KmppKotlinx_serialization_runtimeGeneratedSerializer, KmppKotlinx_serialization_runtimeSerialModuleCollector, KmppKotlinKClass, KmppKotlinComparable, KmppKotlinKDeclarationContainer, KmppKotlinKAnnotatedElement, KmppKotlinKClassifier;
 
@@ -153,8 +153,7 @@ __attribute__((swift_name("KotlinBoolean")))
 __attribute__((swift_name("KmppBootstrapShared")))
 @interface KmppKmppBootstrapShared : KotlinBase
 - (instancetype)initWithPlatform:(KmppPlatform *)platform taskQueue:(KmppTaskQueue *)taskQueue logger:(KmppLogger *)logger __attribute__((swift_name("init(platform:taskQueue:logger:)"))) __attribute__((objc_designated_initializer));
-- (void)sayHelloPerson:(KmppPerson *)person __attribute__((swift_name("sayHello(person:)")));
-- (void)sayHello2Person:(KmppPerson *)person __attribute__((swift_name("sayHello2(person:)")));
+- (void)sayHello __attribute__((swift_name("sayHello()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))

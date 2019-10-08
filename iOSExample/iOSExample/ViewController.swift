@@ -29,8 +29,7 @@ class ViewController: UIViewController {
     @IBAction func hello(_ sender: Any) {
         var i = 0
         while (i < 1000) {
-            //kmpp.sayHello(person: Person(name: "Piasy", age: 26))
-            kmpp.sayHello2(person: Person(name: "Piasy", age: 26))
+            kmpp.sayHello()
             i += 1
         }
     }

@@ -1,7 +1,8 @@
 package com.piasy.kmpp.api
 
-import kotlin.native.concurrent.TransferMode.UNSAFE
+import kotlin.native.concurrent.TransferMode.SAFE
 import kotlin.native.concurrent.Worker
+import kotlin.native.concurrent.freeze
 
 
 /**
@@ -11,7 +12,7 @@ actual class TaskQueue() {
     private val worker = Worker.start()
 
     actual fun post(task: () -> Unit) {
-        worker.execute(UNSAFE, { /*task*/ }) { /*t -> t()*/ }
+        worker.execute(SAFE, { task.freeze() }) { t -> t() }
         /*val t = task.freeze()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             t()

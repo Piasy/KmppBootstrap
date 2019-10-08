@@ -25,6 +25,6 @@ enableFeaturePreview('GRADLE_METADATA')
 
 include ':kmpp'
 
-if (System.getProperty("os.name") == "Mac OS X") {
-    include ':AndroidExample'
-}
+//if (System.getProperty("os.name") == "Mac OS X") {
+//    include ':AndroidExample'
+//}
