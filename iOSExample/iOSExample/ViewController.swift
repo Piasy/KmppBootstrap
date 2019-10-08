@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     //MARK: Actions
     @IBAction func hello(_ sender: Any) {
         var i = 0
-        while (i < 1000) {
+        while (i < 100000) {
             kmpp.sayHello()
             i += 1
         }
