@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         val kmpp = KmppBootstrap()
         val hello = findViewById<Button>(R.id.hello)
         val label = findViewById<TextView>(R.id.label)
-        //hello.setOnClickListener { label.text = kmpp.sayHello(piasy) }
+        hello.setOnClickListener {
+            for (i in 0..1000) {
+                kmpp.sayHello2(piasy)
+            }
+        }
     }
 }

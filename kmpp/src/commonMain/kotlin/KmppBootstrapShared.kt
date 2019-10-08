@@ -25,7 +25,7 @@ abstract class KmppBootstrapShared(
     }
 
     fun sayHello2(person: Person) {
-        val info = json.stringify(Person.serializer(), person)
-        taskQueue.post { logger.info("Kmpp", info) }
+        //val info = json.stringify(Person.serializer(), person)
+        taskQueue.post { /*logger.info("Kmpp", info)*/ }
     }
 }

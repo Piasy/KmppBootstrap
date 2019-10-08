@@ -15,3 +15,7 @@ fun sayHello(kmpp: KmppBootstrap, person: Person): String {
     val dummyInfo = dummy.dummy_get_str()?.toKString()
     return "$superHello, $dummyInfo"
 }
+
+fun sayHello2(kmpp: KmppBootstrap, person: Person) {
+    kmpp.sayHello2(person)
+}
