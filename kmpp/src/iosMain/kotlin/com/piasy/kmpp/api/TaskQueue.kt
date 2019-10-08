@@ -13,9 +13,7 @@ actual class TaskQueue() {
 
     actual fun post(task: () -> Unit) {
         worker.execute(SAFE, { task.freeze() }) { t -> t() }
-        /*val t = task.freeze()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            t()
-        }*/
+        // memory will drop back when using gcd
+        // dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), task.freeze())
     }
 }
