@@ -1,0 +1,3 @@
+language = Objective-C
+headers = IOSDummyObj.h
+headerFilter = *

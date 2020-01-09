@@ -1,9 +1,13 @@
 package com.piasy.kmpp
 
-import com.piasy.kmpp.api.Hello
-import com.piasy.kmpp.data.Person
+import Dummy.IOSDummyObj
+import platform.Foundation.NSLog
 
 /**
  * Created by Piasy{github.com/Piasy} on 2019-02-16.
  */
-class KmppBootstrap(person: Person) : KmppBootstrapShared(person, Hello())
+class KmppBootstrap {
+  fun test(dummy: IOSDummyObj) {
+    NSLog("test with dummy ${dummy.getValue()}")
+  }
+}

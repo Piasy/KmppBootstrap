@@ -46,10 +46,23 @@ kotlin {
             }
         }
         iosArm64("ios") {
+            compilations.main.cinterops {
+                Dummy {
+                    defFile "${project.projectDir}/src/iosMain/cinterop/Dummy.def"
+                    includeDirs {
+                        allHeaders "${rootProject.projectDir}/libs/iOS/IOSDummyFramework.framework/Headers"
+                    }
+                }
+            }
             binaries {
-                framework {
+                all {
+                    linkerOpts = [
+                        "-F${rootProject.projectDir}/libs/iOS".toString(),
+                        "-framework", "IOSDummyFramework"
+                    ]
+                }
+                staticLib {
                     baseName = "kmpp"
-                    embedBitcode("disable")
                 }
             }
         }
