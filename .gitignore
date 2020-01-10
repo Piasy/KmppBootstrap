@@ -5,8 +5,6 @@ build/
 .DS_STORE
 local.properties
 
-**.xcodeproj
-
 .vs
 **.exe
 **.pdb
