@@ -10,4 +10,10 @@ class KmppBootstrap {
   fun test(dummy: IOSDummyObj) {
     NSLog("test with dummy ${dummy.getValue()}")
   }
+
+  companion object {
+    fun createDummy(value: Int): IOSDummyObj {
+      return IOSDummyObj(value)
+    }
+  }
 }

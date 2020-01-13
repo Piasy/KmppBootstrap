@@ -67,6 +67,9 @@ typedef struct {
 } libkmpp_kref_Dummy_IOSDummyObj;
 typedef struct {
   libkmpp_KNativePtr pinned;
+} libkmpp_kref_com_piasy_kmpp_KmppBootstrap_Companion;
+typedef struct {
+  libkmpp_KNativePtr pinned;
 } libkmpp_kref_kotlinx_serialization_SerializationConstructorMarker;
 typedef struct {
   libkmpp_KNativePtr pinned;
@@ -124,6 +127,11 @@ typedef struct {
               libkmpp_KType* (*_type)(void);
               libkmpp_kref_com_piasy_kmpp_KmppBootstrap (*KmppBootstrap)();
               void (*test)(libkmpp_kref_com_piasy_kmpp_KmppBootstrap thiz, libkmpp_kref_Dummy_IOSDummyObj dummy);
+              struct {
+                libkmpp_KType* (*_type)(void);
+                libkmpp_kref_com_piasy_kmpp_KmppBootstrap_Companion (*_instance)();
+                libkmpp_kref_Dummy_IOSDummyObj (*createDummy)(libkmpp_kref_com_piasy_kmpp_KmppBootstrap_Companion thiz, libkmpp_KInt value);
+              } Companion;
             } KmppBootstrap;
             struct {
               struct {
